@@ -20,6 +20,7 @@ module.exports.search = (req,res) => {
 }
 
 module.exports.create = (req,res) =>{
+    console.log(req.cookies);//lay gia tri cookie, phải install ở server index.js
     res.render('users/create');
 }
 
@@ -28,7 +29,7 @@ module.exports.get = (req,res) =>{
     //console.log(typeof id);
     var user = db.get('users').find({ id : id }).value();
     res.render('users/view',{
-        user: user
+        users: user
     });
 }
 

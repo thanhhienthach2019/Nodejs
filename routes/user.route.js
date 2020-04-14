@@ -14,6 +14,12 @@ const validate = require('../validate/user.validate');
 //Để không cho server restart lại liên tục khi sử dụng lowdb thì tạo thêm file nodemon.json -> ignore: "db.json"
 
 router.get('/', controller.index);
+// Cookie 
+router.get('/cookie',(req,res,next)=>{
+    res.cookie('user-id',12345);
+    res.send('Hello');
+});
+
 router.get('/search', controller.search);
 //get render
 router.get('/create', controller.create);
@@ -33,5 +39,6 @@ function middleware2(req,res,next){
     res.send('Hello');
 }
 router.get('/test',middleware1,middleware2);
+
 //exports chuyển sang route(k co cái này bị lỗi)
 module.exports = router;
