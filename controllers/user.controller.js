@@ -1,7 +1,7 @@
 //import lowdb
 const db = require('../db');
 //import shortid
-const shortid = require('shortid');
+const shortid = require('shortid'); 
 
 module.exports.index =  (req,res) => {
     res.render('users/index',{
@@ -35,21 +35,7 @@ module.exports.get = (req,res) =>{
 module.exports.postCreate = (req,res) =>{
     //console.log(req.body);
     req.body.id = shortid.generate();
-    var errors = [];
-    if(!req.body.name){
-        errors.push('Name is required!');
-    }
-    if(!req.body.phone){
-        errors.push('Phone is required');
-    }
-    if(errors.length){
-        console.log(errors);
-        res.render('users/create',{
-            err: errors,
-            values: req.body
-        });
-        return;
-    }
+    console.log(res.locals);//hien thị biến từ validation gửi wa
     //console.log(errors);
     db.get('users').push(req.body).write();
     res.redirect('/users');

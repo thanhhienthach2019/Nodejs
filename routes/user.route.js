@@ -1,12 +1,9 @@
 const express = require('express');
 const router = express.Router();//trả về router object
-//import lowdb
-const db = require('../db');
-//import shortid
-const shortid = require('shortid');
 //import controller
 const controller = require('../controllers/user.controller');
-
+//import validate(middleware)
+const validate = require('../validate/user.validate');
 /*
 1. res.send('User List'); Send trả về dữ liệu string
 2. Truyền giá trị callback vào template
@@ -25,7 +22,16 @@ router.get('/:id',controller.get);
 
 //Install body-parser(de su dung dc body) -> thêm mới
 //POST
-router.post('/create', controller.postCreate);
-
+router.post('/create', validate.postCreate,controller.postCreate);//validate kiểm tra trước khi chạy middleware 2
+//Midleaware
+function middleware1(req,res,next){
+    console.log('Middleware 1');
+    next();//k có next thì k chạy tiếp middleware 2
+}
+function middleware2(req,res,next){
+    console.log('Middleware 1');
+    res.send('Hello');
+}
+router.get('/test',middleware1,middleware2);
 //exports chuyển sang route(k co cái này bị lỗi)
 module.exports = router;
