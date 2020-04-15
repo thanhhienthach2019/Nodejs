@@ -4,6 +4,7 @@ const router = express.Router();//trả về router object
 const controller = require('../controllers/user.controller');
 //import validate(middleware)
 const validate = require('../validate/user.validate');
+
 /*
 1. res.send('User List'); Send trả về dữ liệu string
 2. Truyền giá trị callback vào template
@@ -13,7 +14,7 @@ const validate = require('../validate/user.validate');
 */
 //Để không cho server restart lại liên tục khi sử dụng lowdb thì tạo thêm file nodemon.json -> ignore: "db.json"
 
-router.get('/', controller.index);
+router.get('/',controller.index);//su dung authmiddleware xac thuc để login trước
 // Cookie 
 router.get('/cookie',(req,res,next)=>{
     res.cookie('user-id',12345);
