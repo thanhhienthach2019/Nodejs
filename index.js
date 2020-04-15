@@ -7,7 +7,10 @@ const db = require('./db');
 const userRoute = require('./routes/user.route');
 //import cookie(install cookie -> cookie-parser)
 const cookieParser = require('cookie-parser');
-
+//import route auth
+const authRoute = require('./routes/auth.route');
+//import miidleware auth login
+const authMiddleware = require('./middlewares/auth.middleware');
 const app = express();
 app.use(bodyParser.json());//su dung body-parser
 app.use(bodyParser.urlencoded({extended: true}));
@@ -24,7 +27,9 @@ app.get('/', (req,res) => {
     }); 
 });
 //Add route user vào
-app.use('/users',userRoute);
+app.use('/users',authMiddleware.requireAuth,userRoute);//tất cả các route thông qua miidleware kiểm tra login
+//Add route auth vao
+app.use('/auth',authRoute);
 
 app.listen(port, () => {
     console.log('Server listening on port '+ port);

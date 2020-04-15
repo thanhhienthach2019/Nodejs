@@ -1,54 +1,11 @@
 {
   "users": [
     {
-      "name": "Thach",
-      "phone": "0975448616",
-      "id": "CGR5zZT32"
-    },
-    {
-      "name": "Thanh",
-      "phone": "0975448616",
-      "id": "NTz0FpFxl"
-    },
-    {
-      "name": "Hien",
-      "id": "O3CEkXtJ0",
-      "phone": "0975448616"
-    },
-    {
-      "name": "Thach Thanh Hien",
-      "phone": "0975448616",
-      "id": "5Q79zov5C"
-    },
-    {
       "name": "Michael Hien",
       "phone": "05050505",
-      "id": "v6usmBGdN"
-    },
-    {
-      "name": "aaaaaaa",
-      "phone": "aaaaaaaaaaaaa",
-      "id": "VhLLZlBlJ"
-    },
-    {
-      "name": "bbbb",
-      "phone": "bbbbbbbbbbbbb",
-      "id": "oHcOAVJ5r"
-    },
-    {
-      "name": "ccccccccc",
-      "phone": "ccccccccccc",
-      "id": "ou3N45Ubg"
-    },
-    {
-      "name": "Leader Huy RM",
-      "phone": "1111111",
-      "id": "bqYGOXFd9"
-    },
-    {
-      "name": "Feresher Huy RM",
-      "phone": "222222",
-      "id": "9bJfcBkcx"
+      "id": "v6usmBGdN",
+      "email": "hien@gmail.com",
+      "password": "123"
     }
   ]
 }
