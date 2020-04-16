@@ -14,7 +14,7 @@ const authMiddleware = require('./middlewares/auth.middleware');
 const app = express();
 app.use(bodyParser.json());//su dung body-parser
 app.use(bodyParser.urlencoded({extended: true}));
-app.use(cookieParser());//su dung cookie parser
+app.use(cookieParser('thanhhien.thach1996'));//su dung cookie parser
 
 app.use(express.static('public'));//add thư mục static để có thể truy cập dc thư mục trong public
 

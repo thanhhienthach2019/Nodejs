@@ -30,6 +30,8 @@ module.exports.postLogin = (req,res) =>{
         });
         return;
     }
-    res.cookie('userId',user.id);
+    res.cookie('userId',user.id,{//cookies sẽ tạo ra 1 chuỗi ngẫu nhiên để xác thực cookies hiện tại
+        signed: true//su dung signed cookie để tránh trường hợp chèn cookie khác để đăng nhập,
+    });
     res.redirect('/users');
 }
