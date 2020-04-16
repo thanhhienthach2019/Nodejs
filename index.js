@@ -1,3 +1,6 @@
+require('dotenv').config();//tìm file .env nếu có thì lấy biến add vào process.env.SESSION_SECRET
+//  console.log(process.env.SESSION_SECRET);//xem biến môi trường trong hệ thống
+//sử dụng trang onetimesecret.com để gửi thông tin mật
 const express = require('express');
 const port = 3000;
 const bodyParser = require('body-parser');
@@ -14,7 +17,9 @@ const authMiddleware = require('./middlewares/auth.middleware');
 const app = express();
 app.use(bodyParser.json());//su dung body-parser
 app.use(bodyParser.urlencoded({extended: true}));
-app.use(cookieParser('thanhhien.thach1996'));//su dung cookie parser
+app.use(cookieParser(process.env.SESSION_SECRET));//su dung cookie parser//truyền vào biến môi trường để k đưa KEY env vào trong git->(tạo ra file .env),
+//cài dotenv(npm i dotenv)
+//và tạo file .gitignore(-> add tên file .env) để khi đưa lên git thì k add những file đó vào
 
 app.use(express.static('public'));//add thư mục static để có thể truy cập dc thư mục trong public
 
