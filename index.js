@@ -1,6 +1,7 @@
 require('dotenv').config();//tìm file .env nếu có thì lấy biến add vào process.env.SESSION_SECRET
 //  console.log(process.env.SESSION_SECRET);//xem biến môi trường trong hệ thống
 //sử dụng trang onetimesecret.com để gửi thông tin mật
+//*thêm "start": "nodemon --inspect index.js" vào packege.json để chạy với chế độ debug
 const express = require('express');
 const port = 3000;
 const bodyParser = require('body-parser');
@@ -12,6 +13,8 @@ const userRoute = require('./routes/user.route');
 const cookieParser = require('cookie-parser');
 //import route auth
 const authRoute = require('./routes/auth.route');
+//import route product
+const productRoute = require('./routes/product.route');
 //import miidleware auth login
 const authMiddleware = require('./middlewares/auth.middleware');
 const app = express();
@@ -35,6 +38,8 @@ app.get('/', (req,res) => {
 app.use('/users',authMiddleware.requireAuth,userRoute);//tất cả các route thông qua miidleware kiểm tra login
 //Add route auth vao
 app.use('/auth',authRoute);
+//Add route product vào
+app.use('/products',productRoute);
 
 app.listen(port, () => {
     console.log('Server listening on port '+ port);
